@@ -4,7 +4,6 @@
 
 <div hidden="@HideButtonStartQuiz">
     <button class="btn btn-primary" @onclick="StartQuiz">Start Quiz</button>
-
 </div>
 
 <div hidden="@HideQustionPanel">
@@ -12,7 +11,7 @@
     <h2><span>@currentQuestion.QuestionText</span></h2>
     <fieldset>
         <legend> Select the options below: </legend>
-        <InputRadioGroup @bind-Value="userTextToShow">
+        <InputRadioGroup @bind-Value="userSelectedAnswer">
         <div>
             <label>
                 <InputRadio Value="@currentQuestion.Option01Text"/>
@@ -40,4 +39,22 @@
         </InputRadioGroup>
 
     </fieldset>
+    <button class="btn btn-Secondary" @onclick ="VerifyAnswer">Check your Answer</button>
+    <div>
+        <div hidden="@HideAnswerPanel">
+            @userResult 
+        </div>
+        <br>
+        <div>
+              <button class="btn btn-Secondary" @onclick="NextQuestion">Next Question</button>
+        </div>
+    </div>
+
 </div>
+ <br>
+<div>
+    <button class="btn btn-secondary" @onclick="Quit" hidden="@HideButtonQuit">Quit</button>
+    <button class="btn btn-secondary" @onclick="QuitQuiz" hidden="@HideButtonQuitQuiz">Quit Quiz</button>
+</div>
+
+
