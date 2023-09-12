@@ -1,4 +1,4 @@
-namespace APQuizApp.Models
+namespace APQiuzAPP.Models
 {
     public class QuizQuestion
     {
