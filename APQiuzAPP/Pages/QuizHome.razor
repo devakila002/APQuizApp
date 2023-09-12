@@ -1,0 +1,43 @@
+@page "/quizhome"
+@inject NavigationManager Navimnger;
+<h1 style="background-color: aqua;">Check your Knowledge</h1>
+
+<div hidden="@HideButtonStartQuiz">
+    <button class="btn btn-primary" @onclick="StartQuiz">Start Quiz</button>
+
+</div>
+
+<div hidden="@HideQustionPanel">
+    <h3><span> Question Panel</span></h3>
+    <h2><span>@currentQuestion.QuestionText</span></h2>
+    <fieldset>
+        <legend> Select the options below: </legend>
+        <InputRadioGroup @bind-Value="userTextToShow">
+        <div>
+            <label>
+                <InputRadio Value="@currentQuestion.Option01Text"/>
+                @currentQuestion.Option01Text
+            </label>
+       </div>
+        <div>
+            <label>
+                <InputRadio Value="@currentQuestion.Option02Text" />
+                @currentQuestion.Option02Text
+            </label>
+       </div>
+        <div>
+            <label>
+                <InputRadio Value="@currentQuestion.Option03Text" />
+                @currentQuestion.Option03Text
+            </label>
+       </div>
+        <div>
+            <label>
+                <InputRadio Value="@currentQuestion.Option04Text" />
+                @currentQuestion.Option04Text
+            </label>
+       </div>
+        </InputRadioGroup>
+
+    </fieldset>
+</div>
