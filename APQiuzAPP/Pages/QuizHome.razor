@@ -8,7 +8,7 @@
 
 <div hidden="@HideQustionPanel">
     <h3><span> Question Panel</span></h3>
-    <h2><span>@currentQuestion.QuestionText</span></h2>
+  <h2><span>@questionNumberToShow</span>    <span>@currentQuestion.QuestionText</span></h2>
     <fieldset>
         <legend> Select the options below: </legend>
         <InputRadioGroup @bind-Value="userSelectedAnswer">
