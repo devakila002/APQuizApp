@@ -12,49 +12,47 @@
     <fieldset>
         <legend> Select the options below: </legend>
         <InputRadioGroup @bind-Value="userSelectedAnswer">
-        <div>
-            <label>
-                <InputRadio Value="@currentQuestion.Option01Text"/>
-                @currentQuestion.Option01Text
-            </label>
-       </div>
-        <div>
-            <label>
-                <InputRadio Value="@currentQuestion.Option02Text" />
-                @currentQuestion.Option02Text
-            </label>
-       </div>
-        <div>
-            <label>
-                <InputRadio Value="@currentQuestion.Option03Text" />
-                @currentQuestion.Option03Text
-            </label>
-       </div>
-        <div>
-            <label>
-                <InputRadio Value="@currentQuestion.Option04Text" />
-                @currentQuestion.Option04Text
-            </label>
-       </div>
+            <div>
+                <label>
+                    <InputRadio Value="@currentQuestion.Option01Text" />
+                    @currentQuestion.Option01Text
+                </label>
+            </div>
+            <div>
+                <label>
+                    <InputRadio Value="@currentQuestion.Option02Text" />
+                    @currentQuestion.Option02Text
+                </label>
+            </div>
+            <div>
+                <label>
+                    <InputRadio Value="@currentQuestion.Option03Text" />
+                    @currentQuestion.Option03Text
+                </label>
+            </div>
+            <div>
+                <label>
+                    <InputRadio Value="@currentQuestion.Option04Text" />
+                    @currentQuestion.Option04Text
+                </label>
+            </div>
         </InputRadioGroup>
-
     </fieldset>
-    <button class="btn btn-Secondary" @onclick ="VerifyAnswer">Check your Answer</button>
+
+    <button class="btn btn-secondary" @onclick="VerifyAnswer">Check your Answer</button>
     <div>
         <div hidden="@HideAnswerPanel">
-            @userResult 
+            @userResult
         </div>
         <br>
         <div>
-              <button class="btn btn-Secondary" @onclick="NextQuestion">Next Question</button>
+            <button class="btn btn-secondary" @onclick="IncrementQuestionNumber">Next Question</button>
         </div>
     </div>
 
 </div>
- <br>
+<br>
 <div>
     <button class="btn btn-secondary" @onclick="Quit" hidden="@HideButtonQuit">Quit</button>
     <button class="btn btn-secondary" @onclick="QuitQuiz" hidden="@HideButtonQuitQuiz">Quit Quiz</button>
 </div>
-
-
