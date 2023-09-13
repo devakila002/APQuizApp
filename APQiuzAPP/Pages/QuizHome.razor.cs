@@ -16,7 +16,7 @@ namespace APQiuzAPP.Pages
 
         QuizQuestion q1 = new QuizQuestion()
         {
-            QuestionText = "1 .What is TDD?",
+            QuestionText = "What is TDD?",
             Option01Text = "Test Driving Destination",
             Option02Text = "Test Driven Driving",
             Option03Text = "Test Driven Development",
@@ -99,9 +99,9 @@ namespace APQiuzAPP.Pages
         {
             if (questionNumberToShow == 1) { currentQuestion = q1; }
             else if (questionNumberToShow == 2) { currentQuestion = q2; }
-            else if (questionNumberToShow == 2) { currentQuestion = q3; }
-            else if (questionNumberToShow == 2) { currentQuestion = q4; }
-            else if (questionNumberToShow == 2) { currentQuestion = q5; }
+            else if (questionNumberToShow == 3) { currentQuestion = q3; }
+            else if (questionNumberToShow == 4) { currentQuestion = q4; }
+            else if (questionNumberToShow == 5) { currentQuestion = q5; }
             else
             {
                 currentQuestion = new QuizQuestion();
@@ -117,21 +117,22 @@ namespace APQiuzAPP.Pages
             NextQuestion();
             HideAnswerPanel = true;
         }
-            public void QuitQuiz()
-            {
-                currentQuestion = new QuizQuestion();
-                HideButtonStartQuiz = false;
-                HideButtonQuitQuiz = true;
-                HideQustionPanel = true;
-                HideButtonQuit = false;
+        public void QuitQuiz()
+        {
+            currentQuestion = new QuizQuestion();
+            questionNumberToShow = 0;
+            HideButtonStartQuiz = false;
+            HideButtonQuitQuiz = true;
+            HideQustionPanel = true;
+            HideButtonQuit = false;
 
-            }
-            public void Quit()
-            {
-                Navimnger.NavigateTo("/");
-                HideQustionPanel = true;
-            }
-        
+        }
+        public void Quit()
+        {
+            Navimnger.NavigateTo("/");
+            HideQustionPanel = true;
+        }
+
 
     }
 }
