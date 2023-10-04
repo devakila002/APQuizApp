@@ -4,6 +4,76 @@ namespace APQiuzAPP.Pages
 
     public partial class QuizHome
     {
+        const string    FILEQUIZENTRIES = " MyQuizEntries.txt";
+
+        public QuizQuestion Model { get; set;} = new QuizQuestion();
+
+        public List<QuizModel> QuizEntries = new List<QuizModel>();
+
+        public QuizHome()
+        {
+            if(File.Exists(FILEQUIZENTRIES))
+            {
+                using (StreamReader sr = new StreamReader(FILEQUIZENTRIES))
+                {
+                    string lineRead = sr.ReadLine();
+                    lineRead = sr.ReadLine();
+                    while (!string.IsNullOrEmpty(lineRead))
+                    {
+                        if(lineRead.Contains("|"))
+                        {
+                            QuizModel quizModel = new QuizModel(lineRead);
+                            QuizEntries.Add(quizModel);
+                        }
+                        lineRead = sr.ReadLine();
+                    }
+                }
+            }
+        }
+
+       void SaveEntry()
+        {
+            Console.WriteLine($"Saving Entry {Model}");
+            QuizModel newRow = new QuizModel();
+           // newRow.Id = Model.Id;
+            newRow.QuestionText = Model.QuestionText;
+            newRow.Option01Text = Model.Option01Text;
+            newRow.Option02Text = Model.Option02Text;
+             newRow.Option03Text = Model.Option03Text;
+             newRow.Option04Text = Model.Option04Text;
+            QuizEntries.Add(newRow);
+        }
+
+        void PersistAllEntries()
+        {
+            // using (TTContext ttContext = new TTContext())
+            // {
+            //     foreach (var ttEntry in ExistingTimeEntries)
+            //     {                    
+            //         ttContext.Add(ttEntry);
+            //     }
+            //     ttContext.SaveChanges();
+            // }
+
+            using (TTContext ttContext = new TTContext())
+            {                
+                int blogCount = random.Next(1000,1000000); // ttContext.Blogs ttContext.Blogs.Count();
+                ttContext.Blogs.Add(new Blog(){ Url = $"https://blognumber{blogCount}"});
+                ttContext.SaveChanges();
+            }
+
+            using (StreamWriter sw = new StreamWriter(FILEQUIZENTRIES))
+            {
+                sw.WriteLine(new QuizModel().Columns());
+                foreach (var QuizEntry in QuizEntries)
+                {
+                    sw.WriteLine(QuizEntry);
+                }
+            }
+        }
+
+
+
         public bool HideButtonStartQuiz { get; set; } = false; //1
         public bool HideQustionPanel { get; set; } = true; //2
         public bool HideAnswerPanel { get; set; } = true; //3
