@@ -38,7 +38,7 @@ public class QuizModel{
         public QuizModel(string lineRead)
         {
             string[] lineReadArray = lineRead.Split("|");
-            Id = Convert.ToInt32(lineReadArray[0]);
+           // Id = Convert.ToInt32(lineReadArray[0]);
             QuestionText = lineReadArray[1];
             Option01Text = lineReadArray[2];
             Option02Text = lineReadArray[3];

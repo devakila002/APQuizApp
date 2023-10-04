@@ -1,14 +1,16 @@
 using Microsoft.EntityFrameworkCore;
-namespace TimeTrackerUI.Models
+namespace APQiuzAPP.Models
 {
-    public class TTContext  : DbContext
+    public class QuizContext  : DbContext
 {
     public DbSet<Blog> Blogs { get; set; }
     public DbSet<Post> Posts { get; set; }
 
+    
+
     public string DbPath { get; }
 
-    public TTContext()
+    public QuizContext()
     {
         var folder = Environment.SpecialFolder.LocalApplicationData;
         var path = Environment.GetFolderPath(folder);

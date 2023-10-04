@@ -6,6 +6,8 @@ namespace APQiuzAPP.Pages
     {
         const string    FILEQUIZENTRIES = " MyQuizEntries.txt";
 
+        private Random random = new Random();
+
         public QuizQuestion Model { get; set;} = new QuizQuestion();
 
         public List<QuizModel> QuizEntries = new List<QuizModel>();
@@ -30,9 +32,8 @@ namespace APQiuzAPP.Pages
                 }
             }
         }
-
-       void SaveEntry()
-        {
+            void SaveEntry()
+          {
             Console.WriteLine($"Saving Entry {Model}");
             QuizModel newRow = new QuizModel();
            // newRow.Id = Model.Id;
@@ -43,23 +44,16 @@ namespace APQiuzAPP.Pages
              newRow.Option04Text = Model.Option04Text;
             QuizEntries.Add(newRow);
         }
+      
 
         void PersistAllEntries()
         {
-            // using (TTContext ttContext = new TTContext())
-            // {
-            //     foreach (var ttEntry in ExistingTimeEntries)
-            //     {                    
-            //         ttContext.Add(ttEntry);
-            //     }
-            //     ttContext.SaveChanges();
-            // }
-
-            using (TTContext ttContext = new TTContext())
+           
+            using (QuizContext quizContext = new QuizContext())
             {                
                 int blogCount = random.Next(1000,1000000); // ttContext.Blogs ttContext.Blogs.Count();
-                ttContext.Blogs.Add(new Blog(){ Url = $"https://blognumber{blogCount}"});
-                ttContext.SaveChanges();
+                quizContext.Blogs.Add(new Blog(){ Url = $"https://blognumber{blogCount}"});
+                quizContext.SaveChanges();
             }
 
             using (StreamWriter sw = new StreamWriter(FILEQUIZENTRIES))
@@ -147,6 +141,8 @@ namespace APQiuzAPP.Pages
         public void VerifyAnswer()
         {
             CheckAnswer();
+                     
+      
         }
 
         public bool CheckAnswer()

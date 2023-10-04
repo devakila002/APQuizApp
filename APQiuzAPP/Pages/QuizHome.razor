@@ -61,4 +61,31 @@
 
      <button class="btn btn-primary" @onclick="SaveEntry">Save</button>
 
+         <button class="btn btn-primary" @onclick="PersistAllEntries">Persist</button>
+
 </div>
+
+<table class="table">
+        <thead>
+            <tr>
+                
+                <th>QuestionText</th>
+                <th>Option01Text</th>
+                <th>Option02Text</th>
+                <th>Option03Text</th>
+                <th>Option04Text</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var quizEntry in QuizEntries)
+            {
+                <tr>
+                    <td>@quizEntry.QuestionText</td>
+                    <td>@quizEntry.Option01Text</td>
+                    <td>@quizEntry.Option02Text</td>
+                    <td>@quizEntry.Option03Text</td>
+                    <td>@quizEntry.Option04Text</td>
+                    </tr>
+            }
+        </tbody>
+    </table>
